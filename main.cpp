@@ -313,10 +313,6 @@ int main() {
                 }
                 if(abs(center.x-windowcenter.x)<leftLight.width&&abs(center.y-windowcenter.y)<1.5*leftLight.width){
                     pitch-=6;
-                    net.sendControlMessage(Net::SendStruct(yaw, pitch, 0, 20.0, 0, 0.0, 0.0, -1, -1));
-                    if(yaw<60||yaw>300){
-                       yaw=60;
-                    }
                     net.sendControlMessage(Net::SendStruct(yaw, pitch, 1, 20.0, 0, 0.0, 0.0, -1, -1));
                     waitKey(20);
                     pitch+=6;
