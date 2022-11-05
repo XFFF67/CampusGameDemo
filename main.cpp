@@ -147,18 +147,11 @@ int main() {
         if(net.getNewestRecvMessage().rest_time>100){
              
         yaw =1;
-        pitch =-3;
-        // if(net.getNewestRecvMessage().bullet_speed>17&&net.getNewestRecvMessage().bullet_speed<18){
-        // }
-        // if(net.getNewestRecvMessage().bullet_speed>18&&net.getNewestRecvMessage().bullet_speed<19){
-        // }
-        // if(net.getNewestRecvMessage().bullet_speed>19&&net.getNewestRecvMessage().bullet_speed<20){
-        //     pitch=-2.5;
-        // }
-        // if(net.getNewestRecvMessage().bullet_speed>20&&net.getNewestRecvMessage().bullet_speed<21){
-        // }
-        // if(net.getNewestRecvMessage().bullet_speed>21&&net.getNewestRecvMessage().bullet_speed<22){
-        // }
+        pitch =dpitch[ipitch];
+        ipitch++;
+        if(net.getNewestRecvMessage().rest_time<=118&&net.getNewestRecvMessage().buff_over_time==0){
+            dpitch[ipitch]=dpitch[ipitch-1]-0.2;
+        }
         net.sendControlMessage(Net::SendStruct(yaw, pitch, 0, 20.0, 0, 0.0, 0.0, -1, -1));
         
         
